@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	TestPacket := "(027043145986AR05150630V5207.4772N00505.9965E000.5115026138.2610000000L000000ffT324)"
+	TestPacket := "(027043145986AP05150630V5207.4772N00505.9965E000.5115026138.2610000000L000000ffT324)"
 	fmt.Println(TestPacket)
 	Head := TestPacket[0:1]
 	fmt.Println("Head = " + Head)
@@ -28,25 +28,26 @@ func CommandType(inputcommand string) {
 		fmt.Println("Down Message")
 		if Commandchar2 == "P" {
 			fmt.Println("Device Parameter Message")
-			if Commandserial == "00" {
+			switch Commandserial {
+			case "00":
 				fmt.Println("One time Calling Message")
-			} else if Commandserial == "03" {
+			case "03":
 				fmt.Println("Read device parameter configuring message")
-			} else if Commandserial == "04" {
+			case "04":
 				fmt.Println("Read device operated status message")
-			} else if Commandserial == "05" {
+			case "05":
 				fmt.Println("Device login response message")
-			} else if Commandserial == "07" {
+			case "07":
 				fmt.Println("Center No. configuring message")
-			} else if Commandserial == "11" {
+			case "11":
 				fmt.Println("Cell phone NO. configuring message")
-			} else if Commandserial == "12" {
+			case "12":
 				fmt.Println("Setting vehicle high and low limit speed")
-			} else if Commandserial == "15" {
+			case "15":
 				fmt.Println("Monitor Command")
-			} else if Commandserial == "17" {
+			case "17":
 				fmt.Println("Read device cell phone configuring")
-			} else {
+			default:
 				fmt.Println("Error in Device Parameter Message")
 			}
 		} else if Commandchar2 == "Q" {
